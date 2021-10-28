@@ -2,40 +2,21 @@ package com.edevement.startup.request;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class User implements Serializable {
-
-	private static final long serialVersionUID = -16332401483373597L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
+public class UpdateUserRequest implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2201572516805087262L;
 	private int userId;
-	@Column(name = "user_type")
 	private String userType;
-	@Column(name = "firstname")
 	private String firstName;
-	@Column(name = "lastname")
 	private String lastName;
-	@Column(name = "username")
 	private String userName;
-	@Column(name = "password")
 	private String password;
-	@Column(name = "phone_number")
 	private String phoneNumber;
-	@Column(name = "emailaddress")
 	private String emailAddress;
-	@Column(name = "location")
 	private String location;
-	@Column(name = "dob")
 	private String dob;
-	@Column(name = "status")
-	private String status;
 	
 	public int getUserId() {
 		return userId;
@@ -97,19 +78,5 @@ public class User implements Serializable {
 	public void setDob(String dob) {
 		this.dob = dob;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userType=" + userType + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", userName=" + userName + ", password=" + password + ", phoneNumber=" + phoneNumber
-				+ ", emailAddress=" + emailAddress + ", location=" + location + ", dob=" + dob + ", status=" + status
-				+ "]";
-	}
-	
+
 }

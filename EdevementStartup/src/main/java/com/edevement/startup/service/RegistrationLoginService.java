@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.edevement.startup.model.User;
 import com.edevement.startup.repo.RegistrationLoginRepository;
+import com.edevement.startup.request.UpdateUserRequest;
 import com.edevement.startup.request.UserRequest;
 
 @Service
@@ -32,14 +33,25 @@ public class RegistrationLoginService {
 		return (List<User>) registrationLoginRepository.findAll(); 
 	}
 	
-	public User updateUser(User user) {
+	public User updateUser(UpdateUserRequest updateUserRequest) {
 		User userToBeUpdated = null;
-		Optional<User> userPresent = registrationLoginRepository.findById(user.getUserId());
+		Optional<User> userPresent = registrationLoginRepository.findById(updateUserRequest.getUserId());
 		if(userPresent.isPresent()) {
 			userToBeUpdated = userPresent.get();
+			userToBeUpdated.setDob(updateUserRequest.getDob());
+			userToBeUpdated.setFirstName(updateUserRequest.getFirstName());
+			userToBeUpdated.setLastName(updateUserRequest.getLastName());
+			userToBeUpdated.setLocation(updateUserRequest.getLocation());
+			userToBeUpdated.setEmailAddress(updateUserRequest.getEmailAddress());
+			userToBeUpdated.setPhoneNumber(updateUserRequest.getPhoneNumber());
+			userToBeUpdated.setUserName(updateUserRequest.getUserName());
+			userToBeUpdated.setPassword(updateUserRequest.getPassword());
+			userToBeUpdated.setUserType(updateUserRequest.getUserType());	
+			registrationLoginRepository.save(userToBeUpdated);
 		}
 		return userToBeUpdated;
 	}
+	
 	
 	public User findByUserName(String userName) {
 		return registrationLoginRepository.findByUserName(userName);

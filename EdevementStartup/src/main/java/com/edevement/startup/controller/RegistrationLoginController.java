@@ -11,11 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edevement.startup.model.User;
 import com.edevement.startup.request.AddUserRequest;
+import com.edevement.startup.request.UpdateUserRequest;
 import com.edevement.startup.request.UserRequest;
 import com.edevement.startup.response.Status;
 import com.edevement.startup.service.RegistrationLoginService;
@@ -79,6 +81,18 @@ public class RegistrationLoginController {
 			System.out.println("Error occured while fetchProductByAdvancedSearch : " + e.getMessage());
 		}
 		return null;
+	}
+	@PutMapping("user-update")
+	public User updateUser(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, 
+			@RequestBody UpdateUserRequest updateUserRequest ) {
+		System.out.println("userSearch");
+		User user = null;
+		try {
+			user = registrationLoginService.updateUser(updateUserRequest );
+		} catch (Exception e) {
+			System.out.println("Error occured while fetchProductByAdvancedSearch : " + e.getMessage());
+		}
+		return user;
 	}
 	
 	@GetMapping("fetch-all-users")
