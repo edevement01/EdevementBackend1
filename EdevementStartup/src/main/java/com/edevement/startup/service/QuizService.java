@@ -34,6 +34,8 @@ public class QuizService {
 			QuestionAnswer questionAnswer = questionAnswerRepository.findByQuestionId(userAnswerRequest.getQuestionId());
 			if(questionAnswer.getQuestionAnswer().equalsIgnoreCase(userAnswerRequest.getAnswer())) {
 				resultPoints = resultPoints + quizRepository.findById(userAnswerRequest.getQuestionId()).get().getQuestionPoints();
+			} else {
+				resultPoints = resultPoints -1;
 			}
 		}
 		return resultPoints;
