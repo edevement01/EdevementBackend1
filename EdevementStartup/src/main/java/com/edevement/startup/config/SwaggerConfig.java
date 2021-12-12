@@ -25,7 +25,7 @@ public class SwaggerConfig {
 
 	private Predicate<String> postPaths() {
 		return or(regex("/addUser.*"), regex("/user-search.*"), regex("/fetch-all-users.*"), regex("/fetch-questions-by-type-category.*"),
-				regex("/submit-quiz.*"),regex("/user-update.*"));
+				regex("/submit-quiz.*"),regex("/user-update.*"), regex("/fetch-quiz-types.*"));
 	}
 
 	private ApiInfo apiInfo() {

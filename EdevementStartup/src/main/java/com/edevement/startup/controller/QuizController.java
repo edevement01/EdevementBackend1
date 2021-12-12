@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edevement.startup.model.Question;
+import com.edevement.startup.model.QuizType;
 import com.edevement.startup.request.UserQuizRequest;
 import com.edevement.startup.service.QuizService;
 
@@ -46,5 +47,10 @@ public class QuizController {
 		}
 		return resultPoints;
 		
+	}
+	
+	@GetMapping("fetch-quiz-types")
+	public List<QuizType> fetchQuizTypes(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+		return quizService.fetchQuizTypes();
 	}
 }

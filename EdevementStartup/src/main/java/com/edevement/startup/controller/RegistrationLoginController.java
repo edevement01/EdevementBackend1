@@ -68,19 +68,19 @@ public class RegistrationLoginController {
 	}
 	
 	@PostMapping("user-search")
-	public User userSearch(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, 
+	public ResponseEntity<User> userSearch(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, 
 			@RequestBody UserRequest userRequest) {
 		System.out.println("userSearch");
-		List<User> users = null;
 		try {
-			users = registrationLoginService.userSearch(userRequest);
+			
+			List<User> users = registrationLoginService.userSearch(userRequest);
 			if(null != users && users.size() > 0) {
-				return users.get(0);
+				return new ResponseEntity<User>(users.get(0), HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			System.out.println("Error occured while fetchProductByAdvancedSearch : " + e.getMessage());
 		}
-		return null;
+		return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
 	}
 	@PutMapping("user-update")
 	public User updateUser(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, 

@@ -6,6 +6,7 @@ public class UserQuizRequest {
 	
 	private int userId;
 	private List<UserAnswerRequest> userAnswerRequest;
+	private String quizType;
 	
 	public int getUserId() {
 		return userId;
@@ -18,6 +19,12 @@ public class UserQuizRequest {
 	}
 	public void setUserAnswerRequest(List<UserAnswerRequest> userAnswerRequest) {
 		this.userAnswerRequest = userAnswerRequest;
+	}
+	public String getQuizType() {
+		return quizType;
+	}
+	public void setQuizType(String quizType) {
+		this.quizType = quizType;
 	}
 	
 }
